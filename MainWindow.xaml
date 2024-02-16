@@ -1,0 +1,158 @@
+﻿<Window
+    AllowsTransparency="True"
+    Background="Transparent"
+    Effect="{DynamicResource WinEfect}"
+    Height="750"
+    MinHeight="500"
+    MinWidth="1000"
+    Title="MainWindow"
+    Width="1200"
+    WindowChrome.WindowChrome="{DynamicResource WinChorm}"
+    WindowStyle="None"
+    mc:Ignorable="d"
+    x:Class="Voice_Synthesis.MainWindow"
+    x:Name="Window"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:Voice_Synthesis"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Window.Resources>
+        <WindowChrome x:Key="WinChorm">
+            <WindowChrome.ResizeBorderThickness>5</WindowChrome.ResizeBorderThickness>
+            <WindowChrome.CaptionHeight>0</WindowChrome.CaptionHeight>
+        </WindowChrome>
+    </Window.Resources>
+    <Border Background="Transparent">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Border
+                    BorderThickness="0"
+                    MouseLeftButtonDown="MoveWindow"
+                    Padding="10,5"
+                    Style="{StaticResource LeftBorder}">
+                    <Grid>
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            Style="{StaticResource TitleTextblock}"
+                            Text="InfinityVoicescape"
+                            UseLayoutRounding="True" />
+                        <StackPanel
+                            HorizontalAlignment="Right"
+                            Margin="50,0,25,0"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                Cursor="Hand"
+                                Margin="0,0,20,0"
+                                MouseLeftButtonDown="intercept"
+                                MouseLeftButtonUp="WindowMinimized"
+                                Style="{StaticResource NavIconBox}"
+                                VerticalAlignment="Center">
+                                <iconPacks:PackIconMicrons Kind="Minus" Style="{StaticResource NavIcoMix}" />
+                            </TextBlock>
+                            <TextBlock
+                                Cursor="Hand"
+                                Margin="0,0,20,0"
+                                MouseLeftButtonDown="intercept"
+                                MouseLeftButtonUp="WindowMaximized"
+                                Style="{StaticResource NavIconBox}"
+                                VerticalAlignment="Center">
+                                <iconPacks:PackIconCodicons Kind="ChromeMaximize" Style="{StaticResource NavIcoMax}" />
+                            </TextBlock>
+                            <TextBlock
+                                Cursor="Hand"
+                                MouseLeftButtonDown="intercept"
+                                MouseLeftButtonUp="WindowClosed"
+                                Style="{StaticResource NavIconBox}"
+                                VerticalAlignment="Center">
+                                <iconPacks:PackIconMicrons Kind="Cancel" Style="{StaticResource NavIcoMix}" />
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border
+                    BorderThickness="0"
+                    Grid.Column="0"
+                    Padding="0,0,0,0"
+                    Style="{StaticResource LeftBorder}">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <!--~1~<Button
+                            Click="MenuOnClick"
+                            Command="{Binding MenuChangePageCommand}"
+                            CommandParameter="HOME"
+                            Style="{StaticResource MenuButton}"
+                            x:Name="DefaultMenu">
+                            <StackPanel>
+                                <iconPacks:PackIconRemixIcon
+                                    Foreground="#50596b"
+                                    Kind="VoiceprintFill"
+                                    Style="{StaticResource MenuButtonIcon}" />
+                                ~2~<Image Source="img/BV2.png" Style="{StaticResource MenuButtonImage}" />@2@
+                                <TextBlock Style="{StaticResource MenuButtonText}" Text="主页面" />
+                            </StackPanel>
+                        </Button>-->
+                            <ItemsControl ItemsSource="{Binding PageInfos}" x:Name="Menu">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button
+                                            Click="MenuOnClick"
+                                            Command="{Binding ElementName=Window, Path=DataContext.MenuChangePageCommand}"
+                                            CommandParameter="{Binding url}"
+                                            Style="{StaticResource MenuButton}">
+                                            <Grid>
+                                                <StackPanel>
+                                                    <Image Source="{Binding Cover}" Style="{StaticResource MenuButtonImage}" />
+                                                    <TextBlock Style="{StaticResource MenuButtonText}" Text="{Binding Name}" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <!--<Button
+                            Click="MenuOnClick"
+                            Command="{Binding MenuChangePageCommand}"
+                            CommandParameter="SVC"
+                            Style="{StaticResource MenuButton}">
+                            <Grid>
+                                <StackPanel>
+                                    <Image Source="img/SVC.png" Style="{StaticResource MenuButtonImage}" />
+                                    <TextBlock Style="{StaticResource MenuButtonText}">SVC</TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </Button>-->
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+                <Border Grid.Column="1" Style="{StaticResource MainBorder}">
+                    <Grid
+                        HorizontalAlignment="Stretch"
+                        Margin="0,0,0,0"
+                        VerticalAlignment="Stretch">
+                        <Frame
+                            BorderThickness="0"
+                            NavigationUIVisibility="Hidden"
+                            x:Name="MainFrame" />
+                    </Grid>
+                </Border>
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>

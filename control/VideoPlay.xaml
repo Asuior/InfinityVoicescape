@@ -1,0 +1,94 @@
+<UserControl
+    Background="#F5F5F5"
+    Height="100"
+    Width="400"
+    d:DesignHeight="100"
+    d:DesignWidth="400"
+    mc:Ignorable="d"
+    x:Class="Voice_Synthesis.control.VideoPlay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:Vlc="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:local="clr-namespace:Voice_Synthesis.control"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pu="https://opensource.panuon.com/wpf-ui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border CornerRadius="15">
+
+        <Grid>
+            <MediaElement
+                LoadedBehavior="Manual"
+                MediaEnded="AudioPlayer_OnMediaEnded"
+                UnloadedBehavior="Close"
+                Visibility="Hidden"
+                x:Name="AudioPlayer" />
+            <ProgressBar
+                Foreground="Gray"
+                IsIndeterminate="True"
+                Style="{StaticResource MaterialDesignCircularProgressBar}"
+                Value="0"
+                x:Name="loading" />
+            <Grid Visibility="Hidden" x:Name="PlayerControl">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="50" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        Style="{StaticResource AudioPlayerTimer}"
+                        Text="00:00"
+                        x:Name="StartTime" />
+                    <Slider
+                        Foreground="Black"
+                        Grid.Column="1"
+                        Maximum="1"
+                        Minimum="0"
+                        MouseLeftButtonDown="ControlSlider_OnMouseLeftButtonDown"
+                        Style="{StaticResource SliderStyle1}"
+                        Thumb.DragCompleted="ControlSlider_DragEnd"
+                        Thumb.DragStarted="ControlSlider_DragStarted"
+                        Value="0"
+                        ValueChanged="ControlSlider_OnValueChanged"
+                        x:Name="ControlSlider" />
+                    <TextBlock
+                        Grid.Column="2"
+                        Style="{StaticResource AudioPlayerTimer}"
+                        Text="11:00"
+                        x:Name="EnfTime" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock MouseLeftButtonUp="LeftOnMouseLeftButtonUp">
+                            <iconPacks:PackIconFontisto
+                                Height="24"
+                                Kind="Backward"
+                                Margin="0,0,10,0"
+                                Width="24" />
+                        </TextBlock>
+                        <TextBlock MouseLeftButtonUp="ChangePlayerStatusButtom_OnMouseLeftButtonUp">
+                            <iconPacks:PackIconEntypo
+                                Height="24"
+                                Kind="ControllerPlay"
+                                Width="24"
+                                x:Name="ChangePlayerStatusButtom" />
+                        </TextBlock>
+                        <TextBlock MouseLeftButtonUp="RightOnMouseLeftButtonUp">
+                            <iconPacks:PackIconFontisto
+                                Height="24"
+                                Kind="Forward"
+                                Margin="10,0,0,0"
+                                Width="24" />
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

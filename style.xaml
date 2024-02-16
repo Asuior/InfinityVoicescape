@@ -1,0 +1,163 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="{x:Type Button}" x:Key="MenuButton">
+        <Setter Property="Height" Value="45" />
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#50596b" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        BorderBrush="Transparent"
+                        BorderThickness="3,0,0,0"
+                        CornerRadius="10"
+                        Margin="10,0"
+                        Padding="20,0">
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#e4e8ec" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="3,0,0,0"
+                                CornerRadius="10"
+                                Margin="10,0"
+                                Padding="20,0">
+                                <Border.BorderBrush>
+                                    <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                                        <GradientStop Color="#1890e6" Offset="0.2" />
+                                        <GradientStop Color="#f0f0f0" Offset="0" />
+                                        <GradientStop Color="#f0f0f0" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.BorderBrush>
+                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="MenuButtonText">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Margin" Value="15,0,0,0" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="{x:Type iconPacks:PackIconRemixIcon}" x:Key="MenuButtonIcon">
+        <Setter Property="Width" Value="18" />
+        <Setter Property="Height" Value="18" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="{x:Type iconPacks:PackIconMaterial}" x:Key="MenuButtonIcon2">
+        <Setter Property="Width" Value="18" />
+        <Setter Property="Height" Value="18" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="{x:Type iconPacks:PackIconBootstrapIcons}" x:Key="MenuButtonIcon3">
+        <Setter Property="Width" Value="18" />
+        <Setter Property="Height" Value="18" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="{x:Type Border}" x:Key="LeftBorder">
+        <Setter Property="Background" Value="#f0f3f6" />
+    </Style>
+    <Style TargetType="{x:Type Border}" x:Key="MainBorder">
+        <Setter Property="Background" Value="#f7f9fc" />
+    </Style>
+    <Style TargetType="{x:Type Separator}" x:Key="LeftBorderSeparator">
+        <Setter Property="Background" Value="#e4e8ec" />
+    </Style>
+    <Style TargetType="{x:Type iconPacks:PackIconMicrons}" x:Key="NavIcoMix">
+        <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TextBlock}}}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="14" />
+        <Setter Property="Height" Value="14" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <Style TargetType="{x:Type iconPacks:PackIconCodicons}" x:Key="NavIcoMax">
+        <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TextBlock}}}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="14" />
+        <Setter Property="Height" Value="14" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="NavIconBox">
+        <Setter Property="Foreground" Value="#9fa5af" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#656c7d" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Image}" x:Key="ComicImage">
+        <Setter Property="Width" Value="174" />
+    </Style>
+    <Style
+        BasedOn="{StaticResource ComicImage}"
+        TargetType="{x:Type Image}"
+        x:Key="ComicImageMark">
+        <Setter Property="Visibility" Value="Hidden" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TextBlock}}}" Value="True">
+                <Setter Property="Visibility" Value="Visible" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="ComicTitle">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TextBlock}}}" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="ComicInfoBox">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#1792e7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Run}" x:Key="ComicTitleHead">
+        <Setter Property="FontSize" Value="36" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="#1790e6" />
+    </Style>
+    <Style TargetType="{x:Type Run}" x:Key="ComicTitleSub">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+    <Style TargetType="{x:Type Border}" x:Key="CarouselBorder">
+        <Setter Property="Background" Value="#66000000" />
+        <Setter Property="Height" Value="60" />
+        <Setter Property="Padding" Value="20,10" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="CarouselBorderText">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="AudioPlayerTimer">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+</ResourceDictionary>

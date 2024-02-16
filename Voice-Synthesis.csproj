@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
+        <RootNamespace>Voice_Synthesis</RootNamespace>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <PackageId>InfinityVoicescape</PackageId>
+        <Title>InfinityVoicescape</Title>
+        <Authors>Asuior</Authors>
+        <AssemblyName>InfinityVoicescape</AssemblyName>
+        <ApplicationIcon>favicon.ico</ApplicationIcon>
+        <SupportedOSPlatformVersion>10.0.22000.0</SupportedOSPlatformVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Flurl.Http" Version="4.0.2" />
+      <PackageReference Include="HandyControl" Version="3.5.0" />
+      <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
+      <PackageReference Include="MaterialDesignColors" Version="3.0.0-ci528" />
+      <PackageReference Include="MaterialDesignThemes" Version="5.0.0-ci528" />
+      <PackageReference Include="MaterialDesignThemes.MahApps" Version="3.0.0-ci528" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+      <PackageReference Include="NAudio" Version="2.2.1" />
+      <PackageReference Include="Panuon.WPF.UI" Version="1.1.16.8" />
+      <PackageReference Include="ShowMeTheXAML.MSBuild" Version="2.0.0" />
+      <PackageReference Include="Vlc.DotNet.Wpf" Version="3.1.0" />
+      <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="font\" />
+      <Folder Include="img\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Resources1.resx" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Resources1.Designer.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="AliceInWonderland-1GzL0-2.ttf" />
+      <None Include="bin\Debug\net8.0-windows\img\Home.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+      <Resource Include="AliceInWonderland-1GzL0-2.ttf">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Baskerville-Bold-1.ttf" />
+      <Resource Include="Baskerville-Bold-1.ttf" />
+      <None Remove="img\BV2.png" />
+      <Resource Include="img\BV2.png" />
+      <None Remove="img\SVC.png" />
+      <Resource Include="img\SVC.png" />
+      <None Remove="img\bg.png" />
+      <Resource Include="img\bg.png" />
+      <None Remove="pages\ArgonPERSONAL-Regular-1.otf" />
+      <Content Include="favicon.ico" />
+      <Resource Include="pages\ArgonPERSONAL-Regular-1.otf" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="PageInterface">
+        <HintPath>..\..\VoiceSynthesisPages\PageInterface\PageInterface\bin\Debug\net7.0\PageInterface.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>
